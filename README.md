@@ -2,35 +2,39 @@
 
 ### Group project
 ### Syscall
- `By: Julien Barbier
+ ` By: Julien Barbier
  Weight: 10
  Project to be done in teams of 2 people (your team: Levy Wanyonyi, Clinton Otondi)
  Project will start Nov 1, 2023 6:00 AM, must end by Nov 16, 2023 6:00 AM
  Checker will be released at Nov 15, 2023 1:12 AM
- An auto review will be launched at the deadline
+ An auto review will be launched at the deadline`
 Concepts
 For this project, we expect you to look at these concepts:
+[code your own shell](https://intranet.alxswe.com/concepts/64)
+[approaching project](https://intranet.alxswe.com/concepts/350)
+[pairings](https://intranet.alxswe.com/concepts/100037)
+[sandbox issues](https://intranet.alxswe.com/concepts/100039)
 
-Everything you need to know to start coding your own shell
-Approaching a Project
-All about Team Projects + Pairings + FAQ (A must read)
-Struggling with the sandbox? Try this: Using Docker & WSL on your local host
-Background Context
-Write a simple UNIX command interpreter.`
+* Everything you need to know to start coding your own shell
+* Approaching a Project
+* All about Team Projects + Pairings + FAQ (A must read)
+* Struggling with the sandbox? Try this: Using Docker & WSL on your local host
+* Background Context
+* Write a simple UNIX command interpreter.`
 ![gates of shell](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg)
 
 
-^ “The Gates of Shell”, by Spencer Cheng, featuring Julien Barbier
+`“The Gates of Shell”, by Spencer Cheng, featuring Julien Barbier`
 
 Important message from Julien
 It’s time for the famous Simple Shell project. This is one of the most anticipated project and also one that will challenge you a lot about everything you have learn so far:
 
-Basics of programming
+` Basics of programming
 Basics of C
 Basics of thinking like an engineer
 Group work
 and Learning how to learn
-I would like to take this moment to remind you about a few important things.
+I would like to take this moment to remind you about a few important things.`
 
 First, remember the framework. If you do not know it by heart already, it is probably a good idea to read it again: https://intranet.alxswe.com/concepts/559
 
@@ -121,21 +125,21 @@ Unless specified otherwise, your program must have the exact same output as sh (
 The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
 Example of error with sh:
 
-$ echo "qwerty" | /bin/sh
+`$ echo "qwerty" | /bin/sh
 /bin/sh: 1: qwerty: not found
 $ echo "qwerty" | /bin/../bin/sh
 /bin/../bin/sh: 1: qwerty: not found
-$
+$`
 Same error with your program hsh:
 
-$ echo "qwerty" | ./hsh
+` $ echo "qwerty" | ./hsh
 ./hsh: 1: qwerty: not found
 $ echo "qwerty" | ./././hsh
 ./././hsh: 1: qwerty: not found
-$
+$`
 
-List of allowed functions and system calls
-access (man 2 access)
+## List of allowed functions and system calls
+` access (man 2 access)
 chdir (man 2 chdir)
 close (man 2 close)
 closedir (man 3 closedir)
@@ -165,7 +169,7 @@ wait (man 2 wait)
 waitpid (man 2 waitpid)
 wait3 (man 2 wait3)
 wait4 (man 2 wait4)
-write (man 2 write)
+write (man 2 write) `
 Compilation
 Your shell will be compiled this way:
 
@@ -173,15 +177,15 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 Testing
 Your shell should work like this in interactive mode:
 
-$ ./hsh
+` $ ./hsh
 ($) /bin/ls
 hsh main.c shell.c
 ($)
 ($) exit
-$
+$`
 But also in non-interactive mode:
 
-$ echo "/bin/ls" | ./hsh
+` $ echo "/bin/ls" | ./hsh
 hsh main.c shell.c test_ls_2
 $
 $ cat test_ls_2
@@ -191,12 +195,12 @@ $
 $ cat test_ls_2 | ./hsh
 hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
-$
+$`
 Checks
 The Checker will be released at the end of the project (1-2 days before the deadline). We strongly encourage the entire class to work together to create a suite of checks covering both regular tests and edge cases for each task. See task 8. Test suite.
 
-Tasks
-0. Betty would be proud
+` Tasks`
+` 0. Betty would be proud`
 mandatory
 Write a beautiful code that passes the Betty checks
 
@@ -204,30 +208,30 @@ Repo:
 
 GitHub repository: simple_shell
   
-1. Simple shell 0.1
+` 1. Simple shell 0.1`
 mandatory
 Write a UNIX command line interpreter.
 
 Usage: simple_shell
 Your Shell should:
 
-Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+` Display a prompt and wait for the user to type a command. A command line always ends with a new line.
 The prompt is displayed again each time a command has been executed.
 The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
 The command lines are made only of one word. No arguments will be passed to programs.
 If an executable cannot be found, print an error message and display the prompt again.
-Handle errors.
+Handle errors.`
 You have to handle the “end of file” condition (Ctrl+D)
 You don’t have to:
 
-use the PATH
+`use the PATH
 implement built-ins
-handle special characters : ", ', `, \, *, &, #
+handle special characters 
 be able to move the cursor
 handle commands with arguments
-execve will be the core part of your Shell, don’t forget to pass the environ to it…
+execve will be the core part of your Shell, don’t forget to pass the environ to it…`
 
-julien@ubuntu:~/shell$ ./shell 
+` julien@ubuntu:~/shell$ ./shell 
 #cisfun$ ls
 ./shell: No such file or directory
 #cisfun$ /bin/ls
@@ -245,12 +249,12 @@ env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat 
 julien@ubuntu:~/shell$ echo "/bin/ls" | ./shell
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell.c  stat.c         wait
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat test_scripting.sh  wait.c
-#cisfun$ julien@ubuntu:~/shell$
+#cisfun$ julien@ubuntu:~/shell$`
 Repo:
 
 GitHub repository: simple_shell
   
-2. Simple shell 0.2
+` 2. Simple shell 0.2`
 mandatory
 Simple shell 0.1 +
 
@@ -259,13 +263,13 @@ Repo:
 
 GitHub repository: simple_shell
   
-3. Simple shell 0.3
+` 3. Simple shell 0.3`
 mandatory
 Simple shell 0.2 +
 
 Handle the PATH
 fork must not be called if the command doesn’t exist
-julien@ubuntu:~/shell$ ./shell_0.3
+` julien@ubuntu:~/shell$ ./shell_0.3
 :) /bin/ls
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3  stat    test_scripting.sh  wait.c
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell.c    stat.c  wait
@@ -280,12 +284,12 @@ drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a4434973
 drwx------ 3 root   root   4096 Dec  5 12:07 systemd-private-062a0eca7f2a44349733e78cb4abdff4-systemd-timesyncd.service-CdXUtH
 -rw-rw-r-- 1 julien julien    0 Dec  5 12:09 unity_support_test.0
 :) ^C
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$ `
 Repo:
 
 GitHub repository: simple_shell
   
-4. Simple shell 0.4
+` 4. Simple shell 0.4`
 mandatory
 Simple shell 0.3 +
 
@@ -296,12 +300,12 @@ Repo:
 
 GitHub repository: simple_shell
   
-5. Simple shell 1.0
+` 5. Simple shell 1.0`
 mandatory
 Simple shell 0.4 +
 
 Implement the env built-in, that prints the current environment
-julien@ubuntu:~/shell$ ./simple_shell
+` julien@ubuntu:~/shell$ ./simple_shell
 $ env
 USER=julien
 LANGUAGE=en_US
@@ -316,12 +320,12 @@ TERM=xterm-256color
 PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DISPLAY=:0
 $ exit
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$ `
 Repo:
 
 GitHub repository: simple_shell
   
-6. Simple shell 0.1.1
+` 6. Simple shell 0.1.1`
 #advanced
 Simple shell 0.1 +
 
@@ -336,7 +340,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-7. Simple shell 0.2.1
+` 7. Simple shell 0.2.1`
 #advanced
 Simple shell 0.2 +
 
@@ -345,7 +349,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-8. Simple shell 0.4.1
+` 8. Simple shell 0.4.1`
 #advanced
 Simple shell 0.4 +
 
@@ -360,7 +364,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-9. setenv, unsetenv
+` 9. setenv, unsetenv`
 #advanced
 Simple shell 1.0 +
 
@@ -378,7 +382,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-10. cd
+` 10. cd`
 #advanced
 Simple shell 1.0 +
 
@@ -395,12 +399,12 @@ Repo:
 
 GitHub repository: simple_shell
   
-11. ;
+` 11. ;`
 #advanced
 Simple shell 1.0 +
 
 Handle the commands separator ;
-alex@~$ ls /var ; ls /var
+` alex@~$ ls /var ; ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 alex@~$ ls /hbtn ; ls /var
@@ -414,17 +418,17 @@ backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tm
 ls: cannot access /hbtn: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$
+alex@~$`
 Repo:
 
 GitHub repository: simple_shell
   
-12. && and ||
+` 12. && and ||`
 #advanced
 Simple shell 1.0 +
 
 Handle the && and || shell logical operators
-alex@~$ ls /var && ls /var
+` alex@~$ ls /var && ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 alex@~$ ls /hbtn && ls /var
@@ -455,12 +459,12 @@ ls: cannot access /hbtn: No such file or directory
 ls: cannot access /hbtn: No such file or directory
 ls: cannot access /hbtn: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
-alex@~$
+alex@~$ `
 Repo:
 
 GitHub repository: simple_shell
   
-13. alias
+` 13. alias`
 #advanced
 Simple shell 1.0 +
 
@@ -473,7 +477,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-14. Variables
+` 14. Variables`
 #advanced
 Simple shell 1.0 +
 
@@ -481,7 +485,7 @@ Handle variables replacement
 Handle the $? variable
 Handle the $$ variable
 julien@ubuntu:~/shell$ ./hsh
-$ ls /var
+` $ ls /var
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  snap  spool  tmp
 $ echo $?
 0
@@ -490,12 +494,12 @@ $ echo $$
 $ echo $PATH
 /home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 $ exit 
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$ `
 Repo:
 
 GitHub repository: simple_shell
   
-15. Comments
+` 15. Comments`
 #advanced
 Simple shell 1.0 +
 
@@ -509,7 +513,7 @@ Repo:
 
 GitHub repository: simple_shell
   
-16. File as input
+` 16. File as input`
 #advanced
 Simple shell 1.0 +
 
