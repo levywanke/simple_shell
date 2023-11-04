@@ -17,7 +17,7 @@ All about Team Projects + Pairings + FAQ (A must read)
 Struggling with the sandbox? Try this: Using Docker & WSL on your local host
 Background Context
 Write a simple UNIX command interpreter.`
-
+![gates of shell](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg)
 
 
 ^ “The Gates of Shell”, by Spencer Cheng, featuring Julien Barbier
