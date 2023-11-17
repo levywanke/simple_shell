@@ -10,46 +10,46 @@
  **/
 char **split_words(char *line, const char *sep)
 {
-	char **words, **tmp, *token;
-	size_t new_size, old_size;
+	char **srs, **temp, *lexeme;
+	size_t nss, sos;
 
-	old_size = sizeof(char *);
-	words = malloc(old_size);
-	if (words != NULL)
+	sos = sizeof(char *);
+	srs = malloc(sos);
+	if (srs != NULL)
 	{
-		new_size = 1;
-		token = strtok(line, sep);
-		while (token)
+		nss = 1;
+		lexeme = strtok(line, sep);
+		while (lexeme)
 		{
-			if (token[0] == '#')
+			if (lexeme[0] == '#')
 				break;
-			tmp = _realloc(words, old_size, (new_size + 1) * sizeof(char *));
-			old_size = (new_size + 1) * sizeof(char *);
-			if (tmp == NULL)
+			temp = _realloc(srs, sos, (nss + 1) * sizeof(char *));
+			sos = (nss + 1) * sizeof(char *);
+			if (temp == NULL)
 				break;
 
-			words = tmp;
-			++new_size;
+			srs = temp;
+			++nss;
 
-			words[new_size - 2] = malloc(_strlen(token) + 1);
-			if (words == NULL)
+			srs[nss - 2] = malloc(_strlen(lexeme) + 1);
+			if (srs == NULL)
 			{
-				free(words);
-				free(tmp);
+				free(srs);
+				free(temp);
 			}
 
-			if (words[new_size - 2] != NULL)
-				_strcpy(words[new_size - 2], token);
+			if (srs[nss - 2] != NULL)
+				_strcpy(srs[nss - 2], lexeme);
 
-			token = strtok(NULL, sep);
+			lexeme = strtok(NULL, sep);
 
-			tmp = NULL;
+			temp = NULL;
 		}
 
-		words[new_size - 1] = NULL;
+		srs[nss - 1] = NULL;
 	}
 
-	return (words);
+	return (srs);
 }
 
 /**
@@ -64,41 +64,41 @@ char **split_words(char *line, const char *sep)
  **/
 char *join_words(char *word1, char *word2, char *word3, const char *sep)
 {
-	char *aux;
-	int size_str1, size_str2, size_str3, size_sep;
+	char *exically;
+	int ring1, ring2, ring3, bitesep;
 
-	size_str1 = size_str2 = size_sep = 0;
+	ring1 = ring2 = bitesep = 0;
 
 	if (word1 != NULL)
-		size_str1 = _strlen(word1);
+		ring1 = _strlen(word1);
 	else
 		word1 = "";
 
 	if (word2 != NULL)
-		size_str2 = _strlen(word2);
+		ring2 = _strlen(word2);
 	else
 		word2 = "";
 
 	if (word3 != NULL)
-		size_str3 = _strlen(word3);
+		ring3 = _strlen(word3);
 	else
 		word3 = "";
 
 	if (sep != NULL)
-		size_sep = _strlen((char *)sep);
+		bitesep = _strlen((char *)sep);
 	else
 		sep = "";
 
-	aux = malloc(size_str1 + size_str2 + size_sep + size_str3 + size_sep + 2);
-	if (aux == NULL)
+	exically = malloc(ring1 + ring2 + bitesep + ring3 + bitesep + 2);
+	if (exically == NULL)
 		return (NULL);
 
-	aux = _strcpy(aux, word1);
-	aux = _strcat(aux, (char *)sep);
-	aux = _strcat(aux, word2);
-	aux = _strcat(aux, (char *)sep);
-	aux = _strcat(aux, word3);
-	aux = _strcat(aux, "\n");
+	exically = _strcpy(exically, word1);
+	exically = _strcat(exically, (char *)sep);
+	exically = _strcat(exically, word2);
+	exically = _strcat(exically, (char *)sep);
+	exically = _strcat(exically, word3);
+	exically = _strcat(exically, "\n");
 
-	return (aux);
+	return (exically);
 }

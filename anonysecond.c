@@ -10,12 +10,12 @@
  **/
 int digits(int n)
 {
-	int i;
+	int cmp;
 
-	for (i = 0; n != 0; i++, n /= 10)
+	for (cmp = 0; n != 0; cmp++, n /= 10)
 		;
 
-	return (i);
+	return (cmp);
 }
 
 /**
@@ -27,7 +27,7 @@ int digits(int n)
  **/
 char *to_string(int number)
 {
-	int n_digits, i;
+	int n_digits, cmp;
 	char *_number;
 
 	n_digits = digits(number);
@@ -41,8 +41,8 @@ char *to_string(int number)
 	/* Check NULL */
 
 	_number[n_digits] = '\0';
-	for (i = n_digits - 1; number != 0; number /= 10, i--)
-		_number[i] = (number % 10) + '0';
+	for (cmp = n_digits - 1; number != 0; number /= 10, cmp--)
+		_number[cmp] = (number % 10) + '0';
 
 	return (_number);
 }
@@ -69,21 +69,21 @@ int is_numerical(unsigned int n)
  */
 int _atoi(char *s)
 {
-	unsigned int number, i;
+	unsigned int number, cmp;
 	int sign;
 
 	sign = 1;
 	number = 0;
-	for (i = 0; s[i] != '\0'; i++)
+	for (cmp = 0; s[cmp] != '\0'; cmp++)
 	{
-		if (is_numerical(s[i]))
+		if (is_numerical(s[cmp]))
 		{
-			number = (s[i] - 48)	+ number * 10;
+			number = (s[cmp] - 48)	+ number * 10;
 
-			if (s[i + 1] == ' ')
+			if (s[cmp + 1] == ' ')
 				break;
 		}
-		else if (s[i] == '-')
+		else if (s[cmp] == '-')
 		{
 			sign *= -1;
 		}
@@ -102,11 +102,11 @@ int _atoi(char *s)
  **/
 int contains_letter(char *s)
 {
-	int i;
+	int cmp;
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (cmp = 0; s[cmp] != '\0'; cmp++)
 	{
-		if (is_numerical(s[i]) == _FALSE)
+		if (is_numerical(s[cmp]) == _FALSE)
 			return (_TRUE);
 	}
 
