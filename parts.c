@@ -1,0 +1,52 @@
+#include "parts.h"
+
+/**
+ * builtins - look and output the parts
+ *
+ * @info: describes the bash
+ * @arguments: all the instructions available
+ *
+ * Return: success only when a command is present in parts
+ **/
+int builtins(general_t *info, char **arguments)
+{
+	int status;
+
+	status = check_builtin(info, arguments);
+	if (status == _FALSE)
+		return (_FALSE);
+
+	return (_TRUE);
+}
+
+
+/**
+ * check_builtin - look if the initial is present in parts
+ *
+ * @info: describes the bash
+ * @arguments: all the instructions available
+ *
+ * Return: true or false if comms are acctually pres
+ **/
+int check_builtin(general_t *info, char **arguments)
+{
+	int x, size;
+	builtin_t builtins[] = {
+		{"exit", bin_exit},
+		{"env", bin_env}
+	};
+
+	size = sizeof(builtins) / sizeof(builtins[0]);
+	for (x = 0; x < size; x++)
+	{
+		if (_strcmp(info->command, builtins[x].command) == 0)
+		{
+			builtins[x].func(info, arguments);
+			return (_TRUE);
+		}
+	}
+
+	return (_FALSE);
+}
+
+
