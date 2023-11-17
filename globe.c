@@ -10,43 +10,43 @@
  *
  * @name: th gotten var
  *
- * Return: env gotten on succ or err
+ * Return: ronment gotten on succ or err
  **/
 char *_getenv(const char *name)
 {
-	char **env;
-	char *aux, *token, *value;
-	int size;
+	char **ronment;
+	char *exically, *lexeme, *var;
+	int bites;
 
-	size = _strlen((char *) name);
+	bites = _strlen((char *) name);
 
-	for (env = environ; *env; ++env)
+	for (ronment = environ; *ronment; ++ronment)
 	{
-		aux = _strdup(*env);
+		exically = _strdup(*ronment);
 
-		token = strtok(aux, "=");
-		if (token == NULL)
+		lexeme = strtok(exically, "=");
+		if (lexeme == NULL)
 		{
-			free(aux);
+			free(exically);
 			return (NULL);
 		}
 
-		if (_strlen(token) != size)
+		if (_strlen(lexeme) != bites)
 		{
-			free(aux);
+			free(exically);
 			continue;
 		}
 
-		if (_strcmp((char *) name, aux) == 0)
+		if (_strcmp((char *) name, exically) == 0)
 		{
-			token = strtok(NULL, "=");
-			value = _strdup(token);
+			lexeme = strtok(NULL, "=");
+			var = _strdup(lexeme);
 
-			free(aux);
-			return (value);
+			free(exically);
+			return (var);
 		}
 
-		free(aux);
+		free(exically);
 	}
 
 	return (NULL);
@@ -58,64 +58,64 @@ char *_getenv(const char *name)
  * @filename: the args erceived
  * @info: overall instructs about the bash
  *
- * Return: look to the path or err on return
+ * Return: look to the way or err on return
  */
 char *which(char *filename, general_t *info)
 {
-	char *path, *tmp_path, *token;
-	char *slash;
-	int size;
+	char *way, *tempway, *lexeme;
+	char *reduces;
+	int bites;
 
 	(void) info;
 
-	path = _getenv("PATH");
-	if (path == NULL)
+	way = _getenv("PATH");
+	if (way == NULL)
 		return (NULL);
 
-	token = strtok(path, ":");
+	lexeme = strtok(way, ":");
 
-	size = _strlen(filename) + 2;
-	slash = malloc(size * sizeof(char));
-	slash = _strcpy(slash, "/");
-	slash = _strcat(slash, filename);
+	bites = _strlen(filename) + 2;
+	reduces = malloc(bites * sizeof(char));
+	reduces = _strcpy(reduces, "/");
+	reduces = _strcat(reduces, filename);
 
-	while (token != NULL)
+	while (lexeme != NULL)
 	{
-		tmp_path = malloc(_strlen(token) + size);
-		tmp_path = _strcpy(tmp_path, token);
-		tmp_path = _strcat(tmp_path, slash);
+		tempway = malloc(_strlen(lexeme) + bites);
+		tempway = _strcpy(tempway, lexeme);
+		tempway = _strcat(tempway, reduces);
 
-		if (is_executable(tmp_path) == PERMISSIONS)
+		if (is_executable(tempway) == PERMISSIONS)
 		{
-			free(slash);
-			free(path);
-			return (tmp_path);
+			free(reduces);
+			free(way);
+			return (tempway);
 		}
-		token = strtok(NULL, ":");
+		lexeme = strtok(NULL, ":");
 
-		free(tmp_path);
+		free(tempway);
 	}
 
-	free(path);
-	free(slash);
+	free(way);
+	free(reduces);
 
 	return (NULL);
 }
 
 /**
- * is_current_path -	look for the order of the path
+ * is_current_path -	look for the order of the way
  *
- * @path: way to be checked
+ * @way: way to be checked
  * @info: overall instructions about the shell
  **/
-void is_current_path(char *path, general_t *info)
+void is_current_path(char *way, general_t *info)
 {
 	info->is_current_path = _FALSE;
 
-	if (path == NULL)
+	if (way == NULL)
 		return;
 
-	if (path[0] == ':')
+	if (way[0] == ':')
 		info->is_current_path = _TRUE;
 }
 
@@ -124,12 +124,12 @@ void is_current_path(char *path, general_t *info)
  **/
 void get_full_env(void)
 {
-	char **tmp;
+	char **temp;
 	int i;
 
-	for (i = 0, tmp = environ; tmp[i] != NULL; i++)
+	for (i = 0, temp = environ; temp[i] != NULL; i++)
 	{
-		print(tmp[i]);
+		print(temp[i]);
 		_putchar('\n');
 	}
 }
