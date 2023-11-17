@@ -7,5 +7,4 @@
 #include <stdio.h>
 
 void start(general_t *info);
-
 #endif

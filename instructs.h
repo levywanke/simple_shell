@@ -31,4 +31,4 @@ void is_current_path(char *path, general_t *info);
 void get_full_env(void);
 char *_getenv(const char *name);
 char *which(char *filename, general_t *info);
-#endif 
+#endif
