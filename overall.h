@@ -40,7 +40,7 @@ typedef struct __attribute__((__packed__))
 
 typedef struct __attribute__((__packed__))
 {
-	char *message;
+	char *gsms;
 	int code;
 } error_t;
 

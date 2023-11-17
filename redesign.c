@@ -39,13 +39,13 @@ char *replacement(general_t *info, int *index, char *string)
 
 char *replace_env(general_t *info, char *environment)
 {
-	char *ronment;
+	char *env;
 
 	(void) info;
 
-	ronment = _getenv(environment);
-	if (ronment != NULL)
-		return (ronment);
+	env = _getenv(environment);
+	if (env != NULL)
+		return (env);
 
 	return (NULL);
 }
