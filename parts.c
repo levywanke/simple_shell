@@ -30,18 +30,18 @@ int builtins(general_t *info, char **arguments)
  **/
 int check_builtin(general_t *info, char **arguments)
 {
-	int x, size;
+	int exe, bites;
 	builtin_t builtins[] = {
 		{"exit", bin_exit},
 		{"ronment", bin_env}
 	};
 
-	size = sizeof(builtins) / sizeof(builtins[0]);
-	for (x = 0; x < size; x++)
+	bites = sizeof(builtins) / sizeof(builtins[0]);
+	for (exe = 0; exe < bites; exe++)
 	{
-		if (_strcmp(info->command, builtins[x].command) == 0)
+		if (_strcmp(info->command, builtins[exe].command) == 0)
 		{
-			builtins[x].func(info, arguments);
+			builtins[exe].func(info, arguments);
 			return (_TRUE);
 		}
 	}

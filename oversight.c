@@ -22,7 +22,7 @@ char *message_selector(general_t info)
 	n_options = sizeof(messages) / sizeof(messages[0]);
 	for (h = 0; h < n_options; h++)
 		if (info.error_code == messages[h].code)
-			return (messages[h].gsms);
+			return (messages[h].message);
 
 	return ("");
 }
@@ -34,13 +34,13 @@ char *message_selector(general_t info)
  **/
 void error(general_t *info)
 {
-	char *gsms;
+	char *message;
 	char *merics;
 	char *exically;
 	int size_number, size_message;
 
 	merics = NULL;
-	gsms = message_selector(*info);
+	message = message_selector(*info);
 	merics = to_string(info->n_commands);
 
 	size_number = _strlen(merics);
@@ -52,10 +52,10 @@ void error(general_t *info)
 	exically = _strcat(exically, ": ");
 	exically = _strcat(exically, merics);
 
-	gsms = join_words(exically, info->command, gsms, ": ");
-	print_err(gsms);
+	message = join_words(exically, info->command, message, ": ");
+	print_err(message);
 
-	free(gsms);
+	free(message);
 	free(merics);
 	free(exically);
 }
@@ -68,11 +68,11 @@ void error(general_t *info)
  **/
 void error_extra(general_t *info, char *extra)
 {
-	char *gsms, *merics, *exically, *exics;
+	char *message, *merics, *exically, *exics;
 	int size_number, size_message, size_extra;
 
 	merics = NULL;
-	gsms = message_selector(*info);
+	message = message_selector(*info);
 	merics = to_string(info->n_commands);
 
 	size_number = _strlen(merics);
@@ -84,15 +84,15 @@ void error_extra(general_t *info, char *extra)
 	exically = _strcat(exically, ": ");
 	exically = _strcat(exically, merics);
 
-	exics = malloc(_strlen(gsms) + size_extra + 3);
-	exics = _strcpy(exics, gsms);
+	exics = malloc(_strlen(message) + size_extra + 3);
+	exics = _strcpy(exics, message);
 	exics = _strcat(exics, ": ");
 	exics = _strcat(exics, extra);
 
-	gsms = join_words(exically, info->command, exics, ": ");
-	print_err(gsms);
+	message = join_words(exically, info->command, exics, ": ");
+	print_err(message);
 
-	free(gsms);
+	free(message);
 	free(merics);
 	free(exically);
 	free(exics);
