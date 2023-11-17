@@ -14,7 +14,7 @@ int _putchar(char c)
 }
 
 /**
- * print - standard output  
+ * print - standard output
  *
  * @msg: variables
  *

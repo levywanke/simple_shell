@@ -34,7 +34,7 @@ void bin_exit(general_t *info, char **arguments)
  * @info: overall views of the bash
  * @number: instructions
  *
- * Return: true or false 
+ * Return: true or false
  **/
 int number_controller(general_t *info, char *number)
 {
