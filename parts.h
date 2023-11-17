@@ -21,5 +21,5 @@ void bin_env(general_t *info, char **arguments);
 void bin_echo(general_t *info, char **arguments);
 void echo_printer(int index, char *text, char **arguments);
 
-#endif /* BUILTINS_H */
+#endif
 
