@@ -2,6 +2,7 @@
 #include "store.h"
 #include "overall.h"
 #include "instructs.h"
+
 /**
  * analyze_patterns - gateway
  * @info: variable
@@ -10,10 +11,10 @@
 
 void analyze_patterns(general_t *info, char **arguments)
 {
-	int i;
+	int cmp;
 
-	for (i = 0; arguments[i] != NULL; i++)
-		arguments[i] = pattern_handler(info, arguments[i]);
+	for (cmp = 0; arguments[cmp] != NULL; cmp++)
+		arguments[cmp] = pattern_handler(info, arguments[cmp]);
 }
 
 /**
@@ -25,12 +26,12 @@ void analyze_patterns(general_t *info, char **arguments)
 
 char *pattern_handler(general_t *info, char *string)
 {
-	int i;
+	int cmp;
 
-	for (i = 0; string[i] != '\0'; i++)
+	for (cmp = 0; string[cmp] != '\0'; cmp++)
 	{
-		if (string[i] == '$' && string[i + 1] != '\0')
-			string = replace_value(info, &i, string);
+		if (string[cmp] == '$' && string[cmp + 1] != '\0')
+			string = replace_value(info, &cmp, string);
 	}
 
 	return (string);
@@ -46,13 +47,13 @@ char *pattern_handler(general_t *info, char *string)
 
 char *replace_value(general_t *info, int *index, char *string)
 {
-	int i, new_s, old_s;
+	int cmp, nss, oss;
 	char *value;
 
-	i = *index;
-	i++;
+	cmp = *index;
+	cmp++;
 
-	value = replacement(info, index, string + i);
+	value = replacement(info, index, string + cmp);
 	if (value == NULL)
 	{
 		string = _strcpy(string, "");
@@ -61,13 +62,13 @@ char *replace_value(general_t *info, int *index, char *string)
 		;
 	}
 
-	old_s = _strlen(string);
-	new_s = _strlen(value) + 1;
+	oss = _strlen(string);
+	nss = _strlen(value) + 1;
 
-	string = _realloc(string, old_s, new_s);
+	string = _realloc(string, oss, nss);
 	string = _strcpy(string, value);
 
 	free_memory_p(value);
-	*index = i;
+	*index = cmp;
 	return (string);
 }

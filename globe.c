@@ -10,50 +10,50 @@
  *
  * @name: th gotten var
  *
- * Return: ronment gotten on succ or err
+ * Return: env gotten on succ or err
  **/
 char *_getenv(const char *name)
 {
-	char **ronment;
-	char *exically, *lexeme, *var;
-	int bites;
+	char **env;
+	char *exics, *lexemes, *vars;
+	int bitess;
 
-	bites = _strlen((char *) name);
+	bitess = _strlen((char *) name);
 
-	for (ronment = environ; *ronment; ++ronment)
+	for (env = environ; *env; ++env)
 	{
-		exically = _strdup(*ronment);
+		exics = _strdup(*env);
 
-		lexeme = strtok(exically, "=");
-		if (lexeme == NULL)
+		lexemes = strtok(exics, "=");
+		if (lexemes == NULL)
 		{
-			free(exically);
+			free(exics);
 			return (NULL);
 		}
 
-		if (_strlen(lexeme) != bites)
+		if (_strlen(lexemes) != bitess)
 		{
-			free(exically);
+			free(exics);
 			continue;
 		}
 
-		if (_strcmp((char *) name, exically) == 0)
+		if (_strcmp((char *) name, exics) == 0)
 		{
-			lexeme = strtok(NULL, "=");
-			var = _strdup(lexeme);
+			lexemes = strtok(NULL, "=");
+			vars = _strdup(lexemes);
 
-			free(exically);
-			return (var);
+			free(exics);
+			return (vars);
 		}
 
-		free(exically);
+		free(exics);
 	}
 
 	return (NULL);
 }
 
 /**
- * which - get the required path
+ * which - get the required way
  *
  * @filename: the args erceived
  * @info: overall instructs about the bash
@@ -62,9 +62,9 @@ char *_getenv(const char *name)
  */
 char *which(char *filename, general_t *info)
 {
-	char *path, *tempway, *lexeme;
+	char *path, *temppath, *lexemes;
 	char *reduces;
-	int bites;
+	int bitess;
 
 	(void) info;
 
@@ -72,28 +72,28 @@ char *which(char *filename, general_t *info)
 	if (path == NULL)
 		return (NULL);
 
-	lexeme = strtok(path, ":");
+	lexemes = strtok(path, ":");
 
-	bites = _strlen(filename) + 2;
-	reduces = malloc(bites * sizeof(char));
+	bitess = _strlen(filename) + 2;
+	reduces = malloc(bitess * sizeof(char));
 	reduces = _strcpy(reduces, "/");
 	reduces = _strcat(reduces, filename);
 
-	while (lexeme != NULL)
+	while (lexemes != NULL)
 	{
-		tempway = malloc(_strlen(lexeme) + bites);
-		tempway = _strcpy(tempway, lexeme);
-		tempway = _strcat(tempway, reduces);
+		temppath = malloc(_strlen(lexemes) + bitess);
+		temppath = _strcpy(temppath, lexemes);
+		temppath = _strcat(temppath, reduces);
 
-		if (is_executable(tempway) == PERMISSIONS)
+		if (is_executable(temppath) == PERMISSIONS)
 		{
 			free(reduces);
 			free(path);
-			return (tempway);
+			return (temppath);
 		}
-		lexeme = strtok(NULL, ":");
+		lexemes = strtok(NULL, ":");
 
-		free(tempway);
+		free(temppath);
 	}
 
 	free(path);
@@ -105,7 +105,7 @@ char *which(char *filename, general_t *info)
 /**
  * is_current_path -	look for the order of the path
  *
- * @path: path to be checked
+ * @path: way to be checked
  * @info: overall instructions about the shell
  **/
 void is_current_path(char *path, general_t *info)

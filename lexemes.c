@@ -10,46 +10,46 @@
  **/
 char **split_words(char *line, const char *sep)
 {
-	char **srs, **temp, *lexeme;
-	size_t nss, sos;
+	char **arrs, **temp, *lexemes;
+	size_t nss, oss;
 
-	sos = sizeof(char *);
-	srs = malloc(sos);
-	if (srs != NULL)
+	oss = sizeof(char *);
+	arrs = malloc(oss);
+	if (arrs != NULL)
 	{
 		nss = 1;
-		lexeme = strtok(line, sep);
-		while (lexeme)
+		lexemes = strtok(line, sep);
+		while (lexemes)
 		{
-			if (lexeme[0] == '#')
+			if (lexemes[0] == '#')
 				break;
-			temp = _realloc(srs, sos, (nss + 1) * sizeof(char *));
-			sos = (nss + 1) * sizeof(char *);
+			temp = _realloc(arrs, oss, (nss + 1) * sizeof(char *));
+			oss = (nss + 1) * sizeof(char *);
 			if (temp == NULL)
 				break;
 
-			srs = temp;
+			arrs = temp;
 			++nss;
 
-			srs[nss - 2] = malloc(_strlen(lexeme) + 1);
-			if (srs == NULL)
+			arrs[nss - 2] = malloc(_strlen(lexemes) + 1);
+			if (arrs == NULL)
 			{
-				free(srs);
+				free(arrs);
 				free(temp);
 			}
 
-			if (srs[nss - 2] != NULL)
-				_strcpy(srs[nss - 2], lexeme);
+			if (arrs[nss - 2] != NULL)
+				_strcpy(arrs[nss - 2], lexemes);
 
-			lexeme = strtok(NULL, sep);
+			lexemes = strtok(NULL, sep);
 
 			temp = NULL;
 		}
 
-		srs[nss - 1] = NULL;
+		arrs[nss - 1] = NULL;
 	}
 
-	return (srs);
+	return (arrs);
 }
 
 /**
@@ -64,41 +64,41 @@ char **split_words(char *line, const char *sep)
  **/
 char *join_words(char *word1, char *word2, char *word3, const char *sep)
 {
-	char *exically;
-	int ring1, ring2, ring3, bitesep;
+	char *exics;
+	int arr1, arr2, arr3, bitessep;
 
-	ring1 = ring2 = bitesep = 0;
+	arr1 = arr2 = bitessep = 0;
 
 	if (word1 != NULL)
-		ring1 = _strlen(word1);
+		arr1 = _strlen(word1);
 	else
 		word1 = "";
 
 	if (word2 != NULL)
-		ring2 = _strlen(word2);
+		arr2 = _strlen(word2);
 	else
 		word2 = "";
 
 	if (word3 != NULL)
-		ring3 = _strlen(word3);
+		arr3 = _strlen(word3);
 	else
 		word3 = "";
 
 	if (sep != NULL)
-		bitesep = _strlen((char *)sep);
+		bitessep = _strlen((char *)sep);
 	else
 		sep = "";
 
-	exically = malloc(ring1 + ring2 + bitesep + ring3 + bitesep + 2);
-	if (exically == NULL)
+	exics = malloc(arr1 + arr2 + bitessep + arr3 + bitessep + 2);
+	if (exics == NULL)
 		return (NULL);
 
-	exically = _strcpy(exically, word1);
-	exically = _strcat(exically, (char *)sep);
-	exically = _strcat(exically, word2);
-	exically = _strcat(exically, (char *)sep);
-	exically = _strcat(exically, word3);
-	exically = _strcat(exically, "\n");
+	exics = _strcpy(exics, word1);
+	exics = _strcat(exics, (char *)sep);
+	exics = _strcat(exics, word2);
+	exics = _strcat(exics, (char *)sep);
+	exics = _strcat(exics, word3);
+	exics = _strcat(exics, "\n");
 
-	return (exically);
+	return (exics);
 }

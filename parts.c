@@ -33,7 +33,7 @@ int check_builtin(general_t *info, char **arguments)
 	int exe, bites;
 	builtin_t builtins[] = {
 		{"exit", bin_exit},
-		{"ronment", bin_env}
+		{"env", bin_env}
 	};
 
 	bites = sizeof(builtins) / sizeof(builtins[0]);

@@ -27,24 +27,24 @@ int digits(int n)
  **/
 char *to_string(int number)
 {
-	int n_digits, cmp;
-	char *_number;
+	int mericals, cmp;
+	char *ricals;
 
-	n_digits = digits(number);
-	_number = malloc(n_digits * sizeof(char) + 2);
+	mericals = digits(number);
+	ricals = malloc(mericals * sizeof(char) + 2);
 	if (number == 0)
 	{
-		_number[0] = '0';
-		_number[1] = '\0';
-		return (_number);
+		ricals[0] = '0';
+		ricals[1] = '\0';
+		return (ricals);
 	}
 	/* Check NULL */
 
-	_number[n_digits] = '\0';
-	for (cmp = n_digits - 1; number != 0; number /= 10, cmp--)
-		_number[cmp] = (number % 10) + '0';
+	ricals[mericals] = '\0';
+	for (cmp = mericals - 1; number != 0; number /= 10, cmp--)
+		ricals[cmp] = (number % 10) + '0';
 
-	return (_number);
+	return (ricals);
 }
 
 

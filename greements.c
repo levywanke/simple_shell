@@ -31,11 +31,11 @@ int is_executable(char *filename)
  **/
 int is_file(char *file)
 {
-	int i, size;
+	int cmp, bitess;
 
-	size = _strlen(file);
-	for (i = 0; i < size; i++)
-		if (file[i] == '/')
+	bitess = _strlen(file);
+	for (cmp = 0; cmp < bitess; cmp++)
+		if (file[cmp] == '/')
 			return (is_executable(file));
 
 	return (NON_FILE);

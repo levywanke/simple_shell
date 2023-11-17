@@ -69,18 +69,18 @@ char *_strcpy(char *dest, char *src)
  **/
 char *_strdup(char *str)
 {
-	int size, cmp;
+	int bites, cmp;
 	char *dest;
 
 	if (str == NULL)
 		return (NULL);
 
-	size = _strlen(str) + 1;
-	dest = malloc(size * sizeof(char));
+	bites = _strlen(str) + 1;
+	dest = malloc(bites * sizeof(char));
 	if (dest == NULL)
 		return (NULL);
 
-	for (cmp = 0; cmp < size; cmp++)
+	for (cmp = 0; cmp < bites; cmp++)
 		*(dest + cmp) = *(str + cmp);
 
 	/* (dest + cmp) = 0; */
