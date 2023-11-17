@@ -12,7 +12,7 @@
 
 char *replacement(general_t *info, int *index, char *string)
 {
-	char *tmp;
+	char *temp;
 	char symbol;
 
 	(void) index;
@@ -20,14 +20,14 @@ char *replacement(general_t *info, int *index, char *string)
 	symbol = *string;
 	if (symbol != '?' && symbol != '$')
 	{
-		tmp = replace_env(info, string);
-		return (tmp);
+		temp = replace_env(info, string);
+		return (temp);
 	}
 
-	tmp = (symbol == '$') ? to_string(info->pid) :
-		to_string(info->status_code);
+	temp = (symbol == '$') ? to_string(info->pid) :
+		to_string(info->statuscode);
 
-	return (tmp);
+	return (temp);
 }
 
 /**
@@ -39,13 +39,13 @@ char *replacement(general_t *info, int *index, char *string)
 
 char *replace_env(general_t *info, char *environment)
 {
-	char *env;
+	char *ronment;
 
 	(void) info;
 
-	env = _getenv(environment);
-	if (env != NULL)
-		return (env);
+	ronment = _getenv(environment);
+	if (ronment != NULL)
+		return (ronment);
 
 	return (NULL);
 }

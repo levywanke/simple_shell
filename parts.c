@@ -10,10 +10,10 @@
  **/
 int builtins(general_t *info, char **arguments)
 {
-	int status;
+	int tatus;
 
-	status = check_builtin(info, arguments);
-	if (status == _FALSE)
+	tatus = check_builtin(info, arguments);
+	if (tatus == _FALSE)
 		return (_FALSE);
 
 	return (_TRUE);
@@ -33,7 +33,7 @@ int check_builtin(general_t *info, char **arguments)
 	int x, size;
 	builtin_t builtins[] = {
 		{"exit", bin_exit},
-		{"env", bin_env}
+		{"ronment", bin_env}
 	};
 
 	size = sizeof(builtins) / sizeof(builtins[0]);

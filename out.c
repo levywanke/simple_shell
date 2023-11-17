@@ -9,23 +9,23 @@
  **/
 void bin_exit(general_t *info, char **arguments)
 {
-	int status_code, status;
+	int statuscode, tatus;
 
-	status = _TRUE;
+	tatus = _TRUE;
 	if (arguments[1] != NULL)
-		status = number_controller(info, arguments[1]);
+		tatus = number_controller(info, arguments[1]);
 
-	if (status == _FALSE)
+	if (tatus == _FALSE)
 		return;
 
-	status_code = info->status_code;
+	statuscode = info->statuscode;
 
 	free_memory_pp((void **) arguments);
 	free_memory_p((void *) info->buffer);
 	free_memory_p((void *) info->environment);
 	free_memory_p((void *) info);
 
-	exit(status_code);
+	exit(statuscode);
 }
 
 /**
@@ -44,16 +44,16 @@ int number_controller(general_t *info, char *number)
 
 	if (_number < 0 || contains_letter(number))
 	{
-		info->status_code = 2;
+		info->statuscode = 2;
 		info->error_code = _CODE_ILLEGAL_NUMBER;
 		error_extra(info, number);
 		return (_FALSE);
 	}
 
 	if (_number > 255)
-		info->status_code = _number % 256;
+		info->statuscode = _number % 256;
 	else
-		info->status_code = _number;
+		info->statuscode = _number;
 
 	return (_TRUE);
 }

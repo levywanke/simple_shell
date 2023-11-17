@@ -27,7 +27,7 @@ void analyze(char **arguments, general_t *info, char *buff);
 int is_executable(char *filename);
 int is_file(char *command);
 
-void is_current_path(char *way, general_t *info);
+void is_current_path(char *path, general_t *info);
 void get_full_env(void);
 char *_getenv(const char *name);
 char *which(char *filename, general_t *info);

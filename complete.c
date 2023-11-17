@@ -12,7 +12,7 @@
  **/
 void execute(char *command, char **arguments, general_t *info, char *buff)
 {
-	int status;
+	int tatus;
 	pid_t pid;
 
 	pid = fork();
@@ -35,9 +35,9 @@ void execute(char *command, char **arguments, general_t *info, char *buff)
 	}
 	else if (pid > 0)
 	{
-		waitpid(pid, &status, 0);
-		if (WIFEXITED(status))
-			info->status_code = WEXITSTATUS(status);
+		waitpid(pid, &tatus, 0);
+		if (WIFEXITED(tatus))
+			info->statuscode = WEXITSTATUS(tatus);
 	}
 }
 

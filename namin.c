@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	general_t *info;
-	int status_code;
+	int statuscode;
 
 	info = malloc(sizeof(general_t));
 	if (info == NULL)
@@ -21,16 +21,16 @@ int main(int argc, char **argv)
 	}
 
 	info->pid = getpid();
-	info->status_code = 0;
+	info->statuscode = 0;
 	info->n_commands = 0;
 	info->argc = argc;
 	info->argv = argv;
 	info->mode = isatty(STDIN) == INTERACTIVE;
 	start(info);
 
-	status_code = info->status_code;
+	statuscode = info->statuscode;
 
 	free(info);
 
-	return (status_code);
+	return (statuscode);
 }

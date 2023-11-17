@@ -53,26 +53,26 @@ char *_getenv(const char *name)
 }
 
 /**
- * which - get the required way
+ * which - get the required path
  *
  * @filename: the args erceived
  * @info: overall instructs about the bash
  *
- * Return: look to the way or err on return
+ * Return: look to the path or err on return
  */
 char *which(char *filename, general_t *info)
 {
-	char *way, *tempway, *lexeme;
+	char *path, *tempway, *lexeme;
 	char *reduces;
 	int bites;
 
 	(void) info;
 
-	way = _getenv("PATH");
-	if (way == NULL)
+	path = _getenv("PATH");
+	if (path == NULL)
 		return (NULL);
 
-	lexeme = strtok(way, ":");
+	lexeme = strtok(path, ":");
 
 	bites = _strlen(filename) + 2;
 	reduces = malloc(bites * sizeof(char));
@@ -88,7 +88,7 @@ char *which(char *filename, general_t *info)
 		if (is_executable(tempway) == PERMISSIONS)
 		{
 			free(reduces);
-			free(way);
+			free(path);
 			return (tempway);
 		}
 		lexeme = strtok(NULL, ":");
@@ -96,26 +96,26 @@ char *which(char *filename, general_t *info)
 		free(tempway);
 	}
 
-	free(way);
+	free(path);
 	free(reduces);
 
 	return (NULL);
 }
 
 /**
- * is_current_path -	look for the order of the way
+ * is_current_path -	look for the order of the path
  *
- * @way: way to be checked
+ * @path: path to be checked
  * @info: overall instructions about the shell
  **/
-void is_current_path(char *way, general_t *info)
+void is_current_path(char *path, general_t *info)
 {
 	info->is_current_path = _FALSE;
 
-	if (way == NULL)
+	if (path == NULL)
 		return;
 
-	if (way[0] == ':')
+	if (path[0] == ':')
 		info->is_current_path = _TRUE;
 }
 

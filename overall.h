@@ -31,7 +31,7 @@ typedef struct __attribute__((__packed__))
 	int n_commands;
 	char *value_path;
 	int is_current_path;
-	int status_code;
+	int statuscode;
 	char *buffer;
 	char **arguments;
 	char *environment;

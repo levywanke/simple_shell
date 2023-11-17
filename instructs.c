@@ -14,7 +14,7 @@
 void analyze(char **arguments, general_t *info, char *buff)
 {
 	char *cmd;
-	int status;
+	int tatus;
 
 	if (*arguments == NULL || arguments == NULL)
 		return;
@@ -24,16 +24,16 @@ void analyze(char **arguments, general_t *info, char *buff)
 	if (check_builtin(info, arguments) == _TRUE)
 		return;
 
-	status = is_file(cmd);
-	if (status == NON_PERMISSIONS)
+	tatus = is_file(cmd);
+	if (tatus == NON_PERMISSIONS)
 	{
-		info->status_code = 126;
+		info->statuscode = 126;
 		info->error_code = _CODE_EACCES;
 		error(info);
 		return;
 	}
 
-	if (status == 1)
+	if (tatus == 1)
 	{
 		execute(cmd, arguments, info, buff);
 		return;
@@ -50,7 +50,7 @@ void analyze(char **arguments, general_t *info, char *buff)
 		return;
 	}
 
-	info->status_code = 127;
+	info->statuscode = 127;
 	info->error_code = _CODE_CMD_NOT_EXISTS;
 	error(info);
 }
